@@ -13,6 +13,8 @@ import SolutionPowderCoating from './pages/SolutionPowderCoating';
 import SolutionStructures from './pages/SolutionStructures';
 import SolutionWindows from './pages/SolutionWindows';
 import { Toaster } from "@/components/ui/sonner"
+import { AnimatePresence } from 'framer-motion';
+import TransitionWrapper from '@/components/shared/TransitionWrapper';
 
 function App() {
     const location = useLocation();
@@ -25,19 +27,21 @@ function App() {
     return (
         <>
             <Layout currentPageName={path}>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/Home" element={<Home />} />
-                    <Route path="/About" element={<About />} />
-                    <Route path="/Contact" element={<Contact />} />
-                    <Route path="/Industries" element={<Industries />} />
-                    <Route path="/Innovation" element={<Innovation />} />
-                    <Route path="/Solutions" element={<Solutions />} />
-                    <Route path="/SolutionGlass" element={<SolutionGlass />} />
-                    <Route path="/SolutionPowderCoating" element={<SolutionPowderCoating />} />
-                    <Route path="/SolutionStructures" element={<SolutionStructures />} />
-                    <Route path="/SolutionWindows" element={<SolutionWindows />} />
-                </Routes>
+                <AnimatePresence mode="wait">
+                    <Routes location={location} key={location.pathname}>
+                        <Route path="/" element={<TransitionWrapper><Home /></TransitionWrapper>} />
+                        <Route path="/Home" element={<TransitionWrapper><Home /></TransitionWrapper>} />
+                        <Route path="/About" element={<TransitionWrapper><About /></TransitionWrapper>} />
+                        <Route path="/Contact" element={<TransitionWrapper><Contact /></TransitionWrapper>} />
+                        <Route path="/Industries" element={<TransitionWrapper><Industries /></TransitionWrapper>} />
+                        <Route path="/Innovation" element={<TransitionWrapper><Innovation /></TransitionWrapper>} />
+                        <Route path="/Solutions" element={<TransitionWrapper><Solutions /></TransitionWrapper>} />
+                        <Route path="/SolutionGlass" element={<TransitionWrapper><SolutionGlass /></TransitionWrapper>} />
+                        <Route path="/SolutionPowderCoating" element={<TransitionWrapper><SolutionPowderCoating /></TransitionWrapper>} />
+                        <Route path="/SolutionStructures" element={<TransitionWrapper><SolutionStructures /></TransitionWrapper>} />
+                        <Route path="/SolutionWindows" element={<TransitionWrapper><SolutionWindows /></TransitionWrapper>} />
+                    </Routes>
+                </AnimatePresence>
             </Layout>
             <Toaster />
         </>

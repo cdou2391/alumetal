@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { Home, Building, Factory, Landmark, ShieldCheck, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import ImageWithSkeleton from '@/components/shared/ImageWithSkeleton';
 
 const industries = [
     {
@@ -73,10 +74,11 @@ export default function IndustriesServed() {
                                 }`}
                         >
                             <div className="aspect-[4/3] relative">
-                                <img
+                                <ImageWithSkeleton
                                     src={industry.image}
                                     alt={industry.title}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                    className="group-hover:scale-110 transition-transform duration-700"
+                                    containerClassName="w-full h-full"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { ArrowRight, Layers, Shield, Building2, PanelTop, Combine } from 'lucide-react';
 import { motion } from 'framer-motion';
+import ImageWithSkeleton from '@/components/shared/ImageWithSkeleton';
 
 const solutions = [
     {
@@ -81,12 +82,13 @@ export default function SolutionsGrid() {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
                             <Link to={createPageUrl(solution.link)} className="group block h-full">
-                                <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
+                                <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
                                     <div className="relative h-48 overflow-hidden">
-                                        <img
+                                        <ImageWithSkeleton
                                             src={solution.image}
                                             alt={solution.title}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                            className="group-hover:scale-110 transition-transform duration-700"
+                                            containerClassName="w-full h-full"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
                                         <div className="absolute bottom-4 left-4">
