@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/utils';
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 
-interface ImageWithSkeletonProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface ImageWithSkeletonProps extends HTMLMotionProps<"img"> {
     containerClassName?: string;
 }
 
