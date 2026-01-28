@@ -49,33 +49,18 @@ export default function About() {
             {/* Company Overview */}
             <section className="py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
+                            <span className="inline-block px-3 py-1 bg-cyan-100 text-cyan-700 text-sm font-medium rounded-full mb-4">
+                                Who We Are
+                            </span>
                             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                                Rwanda's Premier Metal & Glass Manufacturer
+                                East Africa's Premier Metal & Glass Partner
                             </h2>
-                            <div className="space-y-4 text-slate-600 leading-relaxed">
-                                <p>
-                                    AluMetal Ltd is a premier manufacturer and fabricator of high-quality metal,
-                                    aluminium, and glass products based in Kigali, Rwanda. Built on over two decades
-                                    of industry experience, we bring world-class craftsmanship and innovative
-                                    solutions to the Rwandan market and beyond.
-                                </p>
-                                <p>
-                                    Our commitment to excellence, combined with state-of-the-art production
-                                    facilities, enables us to deliver products that meet international safety
-                                    standards while catering to the unique requirements of each project.
-                                </p>
-                                <p>
-                                    From residential homes to commercial towers, industrial facilities to
-                                    government buildings, we've been the trusted partner for Rwanda's most
-                                    ambitious construction projects.
-                                </p>
-                            </div>
                         </motion.div>
 
                         <motion.div
@@ -90,8 +75,7 @@ export default function About() {
                                 className="w-full h-[400px] object-cover rounded-lg shadow-2xl"
                             />
                             <div className="absolute -bottom-6 -left-6 bg-cyan-500 text-white p-6 rounded-lg shadow-xl">
-                                <div className="text-4xl font-bold mb-1">20+</div>
-                                <div className="text-cyan-100 text-sm">Years Serving Rwanda</div>
+                                <div className="text-cyan-100 text-sm">Years of Service</div>
                             </div>
                         </motion.div>
                     </div>
@@ -183,29 +167,21 @@ export default function About() {
                 </div>
             </section>
 
-            {/* Stats */}
+            {/* Commitment */}
             <section className="py-24 bg-slate-900">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                        {[
-                            { value: '20+', label: 'Years Experience' },
-                            { value: '500+', label: 'Projects Completed' },
-                            { value: '100+', label: 'Color Options' },
-                            { value: '50+', label: 'Year Product Lifespan' },
-                        ].map((stat, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="text-center"
-                            >
-                                <div className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.value}</div>
-                                <div className="text-slate-400">{stat.label}</div>
-                            </motion.div>
-                        ))}
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center"
+                    >
+                        <h2 className="text-3xl font-bold text-white mb-8">Our Commitment</h2>
+                        <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+                            At AluMetal, we pledge to uphold the highest safety standards, deliver on time,
+                            and foster enduring partnerships with our clients. Your success is our reputation.
+                        </p>
+                    </motion.div>
                 </div>
             </section>
         </>

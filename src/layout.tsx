@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Menu, X, Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function Layout({ children, currentPageName }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [solutionsOpen, setSolutionsOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,21 +18,11 @@ export default function Layout({ children, currentPageName }) {
 
     const navigation = [
         { name: 'Home', href: 'Home' },
-        { name: 'About', href: 'About' },
-        {
-            name: 'Solutions',
-            href: 'Solutions',
-            submenu: [
-                { name: 'Powder-Coated Metal', href: 'SolutionPowderCoating' },
-                { name: 'Laminated & Safety Glass', href: 'SolutionGlass' },
-                { name: 'Metal Structures', href: 'SolutionStructures' },
-                { name: 'Windows & Doors', href: 'SolutionWindows' },
-                { name: 'Hybrid Systems', href: 'Innovation' },
-            ]
-        },
-        { name: 'Industries', href: 'Industries' },
-        { name: 'Innovation', href: 'Innovation' },
-        { name: 'Contact', href: 'Contact' },
+        { name: 'About Us', href: 'About' },
+        { name: 'Products', href: 'Products' },
+        { name: 'Services', href: 'Services' },
+        { name: 'Projects', href: 'Projects' },
+        { name: 'Contact Us', href: 'Contact' },
     ];
 
     return (
@@ -79,37 +68,14 @@ export default function Layout({ children, currentPageName }) {
                         {/* Desktop navigation */}
                         <div className="hidden lg:flex items-center gap-8">
                             {navigation.map((item) => (
-                                <div key={item.name} className="relative group">
-                                    {item.submenu ? (
-                                        <>
-                                            <button className="flex items-center gap-1 text-slate-700 hover:text-cyan-600 font-medium transition-colors">
-                                                {item.name}
-                                                <ChevronDown className="w-4 h-4" />
-                                            </button>
-                                            <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                                                <div className="bg-white rounded-lg shadow-xl border border-slate-200 py-2 min-w-[220px]">
-                                                    {item.submenu.map((subItem) => (
-                                                        <Link
-                                                            key={subItem.name}
-                                                            to={createPageUrl(subItem.href)}
-                                                            className="block px-4 py-2 text-slate-700 hover:bg-slate-50 hover:text-cyan-600 transition-colors"
-                                                        >
-                                                            {subItem.name}
-                                                        </Link>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <Link
-                                            to={createPageUrl(item.href)}
-                                            className={`text-slate-700 hover:text-cyan-600 font-medium transition-colors ${currentPageName === item.href ? 'text-cyan-600' : ''
-                                                }`}
-                                        >
-                                            {item.name}
-                                        </Link>
-                                    )}
-                                </div>
+                                <Link
+                                    key={item.name}
+                                    to={createPageUrl(item.href)}
+                                    className={`text-slate-700 hover:text-cyan-600 font-medium transition-colors ${currentPageName === item.href ? 'text-cyan-600' : ''
+                                        }`}
+                                >
+                                    {item.name}
+                                </Link>
                             ))}
                             <Link to={createPageUrl('Contact')}>
                                 <Button className="bg-cyan-500 hover:bg-cyan-600 text-white">
@@ -131,41 +97,14 @@ export default function Layout({ children, currentPageName }) {
                     {mobileMenuOpen && (
                         <div className="lg:hidden py-4 border-t border-slate-200">
                             {navigation.map((item) => (
-                                <div key={item.name}>
-                                    {item.submenu ? (
-                                        <>
-                                            <button
-                                                onClick={() => setSolutionsOpen(!solutionsOpen)}
-                                                className="flex items-center justify-between w-full px-4 py-3 text-slate-700 hover:bg-slate-50"
-                                            >
-                                                {item.name}
-                                                <ChevronDown className={`w-4 h-4 transition-transform ${solutionsOpen ? 'rotate-180' : ''}`} />
-                                            </button>
-                                            {solutionsOpen && (
-                                                <div className="bg-slate-50">
-                                                    {item.submenu.map((subItem) => (
-                                                        <Link
-                                                            key={subItem.name}
-                                                            to={createPageUrl(subItem.href)}
-                                                            className="block px-8 py-2 text-slate-600 hover:text-cyan-600"
-                                                            onClick={() => setMobileMenuOpen(false)}
-                                                        >
-                                                            {subItem.name}
-                                                        </Link>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </>
-                                    ) : (
-                                        <Link
-                                            to={createPageUrl(item.href)}
-                                            className="block px-4 py-3 text-slate-700 hover:bg-slate-50"
-                                            onClick={() => setMobileMenuOpen(false)}
-                                        >
-                                            {item.name}
-                                        </Link>
-                                    )}
-                                </div>
+                                <Link
+                                    key={item.name}
+                                    to={createPageUrl(item.href)}
+                                    className="block px-4 py-3 text-slate-700 hover:bg-slate-50"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    {item.name}
+                                </Link>
                             ))}
                             <div className="px-4 py-3">
                                 <Link to={createPageUrl('Contact')} onClick={() => setMobileMenuOpen(false)}>
@@ -199,7 +138,7 @@ export default function Layout({ children, currentPageName }) {
                                 </div>
                             </div>
                             <p className="text-slate-400 text-sm leading-relaxed">
-                                Premium metal, aluminium, and glass solutions for Rwanda's growing infrastructure.
+                                Premium metal, aluminium, and glass solutions for the region's growing infrastructure.
                                 Over 20 years of expertise.
                             </p>
                         </div>
@@ -209,22 +148,22 @@ export default function Layout({ children, currentPageName }) {
                             <h3 className="text-white font-bold mb-4">Quick Links</h3>
                             <ul className="space-y-2">
                                 <li><Link to={createPageUrl('About')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">About Us</Link></li>
-                                <li><Link to={createPageUrl('Solutions')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Our Solutions</Link></li>
-                                <li><Link to={createPageUrl('Industries')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Industries</Link></li>
-                                <li><Link to={createPageUrl('Innovation')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Innovation</Link></li>
-                                <li><Link to={createPageUrl('Contact')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Contact</Link></li>
+                                <li><Link to={createPageUrl('Products')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Our Products</Link></li>
+                                <li><Link to={createPageUrl('Services')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Services</Link></li>
+                                <li><Link to={createPageUrl('Projects')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Projects</Link></li>
+                                <li><Link to={createPageUrl('Contact')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Contact Us</Link></li>
                             </ul>
                         </div>
 
                         {/* Solutions */}
                         <div>
-                            <h3 className="text-white font-bold mb-4">Solutions</h3>
+                            <h3 className="text-white font-bold mb-4">Our Products</h3>
                             <ul className="space-y-2">
-                                <li><Link to={createPageUrl('SolutionPowderCoating')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Powder Coating</Link></li>
-                                <li><Link to={createPageUrl('SolutionGlass')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Safety Glass</Link></li>
-                                <li><Link to={createPageUrl('SolutionStructures')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Metal Structures</Link></li>
-                                <li><Link to={createPageUrl('SolutionWindows')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Windows & Doors</Link></li>
-                                <li><Link to={createPageUrl('Innovation')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Hybrid Systems</Link></li>
+                                <li><Link to={createPageUrl('Products')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Powder Coating</Link></li>
+                                <li><Link to={createPageUrl('Products')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Safety Glass</Link></li>
+                                <li><Link to={createPageUrl('Products')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Metal Structures</Link></li>
+                                <li><Link to={createPageUrl('Products')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Windows & Doors</Link></li>
+                                <li><Link to={createPageUrl('Products')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Hybrid Systems</Link></li>
                             </ul>
                         </div>
 

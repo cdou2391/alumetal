@@ -38,7 +38,7 @@ export default function HeroSection() {
                     >
                         <span className="inline-flex items-center gap-2 text-cyan-400 text-sm font-medium tracking-wider uppercase mb-6">
                             <span className="w-8 h-px bg-cyan-400" />
-                            Rwanda's Premier Metal & Glass Manufacturer
+                            East Africa's Premier Metal & Glass Manufacturer
                         </span>
                     </motion.div>
 
@@ -48,9 +48,9 @@ export default function HeroSection() {
                         transition={{ duration: 0.6, delay: 0.1 }}
                         className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
                     >
-                        Premium Metal, Aluminium & Glass Solutions for{' '}
+                        Premium Metal, Aluminium & Glass{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-slate-300">
-                            Rwanda's Growing Infrastructure
+                            Solutions
                         </span>
                     </motion.h1>
 
@@ -80,13 +80,13 @@ export default function HeroSection() {
                                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </Button>
                         </Link>
-                        <Link to={createPageUrl('Solutions')}>
+                        <Link to={createPageUrl('Products')}>
                             <Button
                                 size="lg"
                                 variant="outline"
                                 className="bg-transparent border-slate-500 text-white hover:bg-slate-800 px-8 py-6 text-base"
                             >
-                                Explore Our Solutions
+                                Explore Our Products
                             </Button>
                         </Link>
                     </motion.div>
@@ -102,12 +102,12 @@ export default function HeroSection() {
                     {[
                         { value: '20+', label: 'Years Experience' },
                         { value: '500+', label: 'Projects Completed' },
-                        { value: '100+', label: 'Color Options' },
-                        { value: '50+', label: 'Year Lifespan' },
+                        { value: '5/5', label: 'Rated by Clients' },
+                        { value: '100%', label: 'On-Time Delivery' },
                     ].map((stat, i) => (
-                        <div key={i} className="text-center md:text-left">
-                            <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</div>
-                            <div className="text-slate-400 text-sm">{stat.label}</div>
+                        <div key={i} className="text-center md:text-left bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10 hover:bg-white/10 transition-colors">
+                            <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-1">{stat.value}</div>
+                            <div className="text-slate-300 text-sm font-medium">{stat.label}</div>
                         </div>
                     ))}
                 </motion.div>
